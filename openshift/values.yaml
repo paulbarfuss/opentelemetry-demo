@@ -1,0 +1,16 @@
+services:
+- adservice
+- cartservice
+- checkoutservice
+- currencyservice
+- emailservice
+- featureflagservice
+- frontend
+- grafana
+- loadgenerator
+- otelcollector
+- paymentservice
+- productcatalogservice
+- prometheus
+- recommendationservice
+- shippingservice

@@ -1,19 +1,23 @@
-{{- range .Values.services }}
+{{- $namespace := .Values.namespace }}
+{{- $git_uri := .Values.git.uri }}
+{{- $git_ref := .Values.git.ref }}
+{{- range $service := .Values.services }}
 ---
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: "{{ service }}"
+  name: "{{ $service.name }}"
+  namespace: "{{ $namespace }}"
 spec:
   output:
     to:
       kind: ImageStreamTag
-      name: '{{ service }}:latest'
+      name: '{{ $service.name }}:latest'
   source:
-    contextDir: 'src/{{ service }}/src/'
+    contextDir: 'src/{{ $service.name }}/{{ $service.contextdir | default "" }}'
     git:
-      ref: "{{ .Values.git.ref }}"
-      uri: "{{ .Values.git.uri }}"
+      ref: "{{ $git_ref }}"
+      uri: "{{ $git_uri }}"
     type: Git
   strategy:
     type: Docker
@@ -24,7 +28,8 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: "{{ service }}"
+  name: "{{ $service.name }}"
+  namespace: "{{ $namespace }}"
 spec:
   lookupPolicy:
     local: true

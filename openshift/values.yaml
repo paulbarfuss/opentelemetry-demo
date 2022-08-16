@@ -1,16 +1,23 @@
+namespace: opentelemetry-demo
+
 services:
-- adservice
-- cartservice
-- checkoutservice
-- currencyservice
-- emailservice
-- featureflagservice
-- frontend
-- grafana
-- loadgenerator
-- otelcollector
-- paymentservice
-- productcatalogservice
-- prometheus
-- recommendationservice
-- shippingservice
+- name: adservice
+- name: cartservice
+  contextdir: src
+- name: checkoutservice
+- name: currencyservice
+- name: emailservice
+- name: featureflagservice
+- name: frontend
+- name: grafana
+- name: loadgenerator
+- name: otelcollector
+- name: paymentservice
+- name: productcatalogservice
+- name: prometheus
+- name: recommendationservice
+- name: shippingservice
+
+git:
+  uri: https://github.com/paulbarfuss/opentelemetry-demo
+  ref: main

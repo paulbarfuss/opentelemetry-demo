@@ -14,13 +14,15 @@ spec:
       kind: ImageStreamTag
       name: "{{ $service.name }}:latest"
   source:
-    dockerfile: "./src/{{ $service.name }}/{{ $service.dockerfile | default "Dockerfile" }}"
+    contextDir: "{{ $service.contextdir | default "." }}"
     git:
       ref: "{{ $git_ref }}"
       uri: "{{ $git_uri }}"
     type: Git
   strategy:
     type: Docker
+    dockerStrategy:
+      dockerfilePath: "./src/{{ $service.name }}/{{ $service.dockerfile | default "Dockerfile" }}"
   triggers:
     - type: ConfigChange
     - type: ImageChange

@@ -3,15 +3,13 @@ namespace: opentelemetry-demo
 services:
 - name: adservice
 - name: cartservice
-  dockerfile: ./src/cartservice/src/Dockerfile
+  dockerfile: src/Dockerfile
 - name: checkoutservice
 - name: currencyservice
 - name: emailservice
 - name: featureflagservice
 - name: frontend
-- name: grafana
 - name: loadgenerator
-- name: otelcollector
 - name: paymentservice
 - name: productcatalogservice
 - name: recommendationservice

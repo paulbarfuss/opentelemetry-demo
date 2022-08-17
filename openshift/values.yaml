@@ -14,7 +14,6 @@ services:
 - name: otelcollector
 - name: paymentservice
 - name: productcatalogservice
-- name: prometheus
 - name: recommendationservice
 - name: shippingservice
 

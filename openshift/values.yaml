@@ -3,7 +3,7 @@ namespace: opentelemetry-demo
 services:
 - name: adservice
 - name: cartservice
-  contextdir: src
+  dockerfile: ./src/cartservice/src/Dockerfile
 - name: checkoutservice
 - name: currencyservice
 - name: emailservice
